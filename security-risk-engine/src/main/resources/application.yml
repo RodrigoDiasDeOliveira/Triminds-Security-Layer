@@ -1,0 +1,10 @@
+server:
+  port: 8085
+
+spring:
+  application:
+    name: security-risk-engine
+
+logging:
+  level:
+    root: INFO

@@ -1,0 +1,10 @@
+server:
+  port: 8084
+
+spring:
+  application:
+    name: security-policy-engine
+
+logging:
+  level:
+    root: INFO
