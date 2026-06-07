@@ -1,3 +1,6 @@
+
+<img width="1168" height="784" alt="JWyiT" src="https://github.com/user-attachments/assets/94b5d400-9305-4dcd-9f4c-69d019ce2a3a" />
+
 # Triminds Security Layer
 
 A smart security framework for distributed systems at Triminds.
@@ -5,6 +8,9 @@ A smart security framework for distributed systems at Triminds.
 ## Overview
 
 This repository aims to deliver a reusable security platform for Triminds applications, built as a modular Identity & Security Platform.
+
+
+<img width="784" height="1168" alt="yn1kE" src="https://github.com/user-attachments/assets/6d743c24-f138-49a4-8c34-9c12262b658c" />
 
 ### Four pillars
 
