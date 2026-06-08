@@ -1,10 +1,41 @@
-server:
-  port: 8081
-
 spring:
   application:
-    name: security-identity
-
-logging:
-  level:
-    root: INFO
+    name: triminds-security-identity
+  datasource:
+    url: ${IDENTITY_DB_URL:jdbc:postgresql://localhost:5432/triminds_identity}
+    username: ${IDENTITY_DB_USER:triminds}
+    password: ${IDENTITY_DB_PASS:triminds}
+    hikari:
+      maximum-pool-size: 20
+      minimum-idle: 5
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+    open-in-view: false
+  flyway:
+    enabled: true
+    locations: classpath:db/migration
+    baseline-on-migrate: true
+  data:
+    redis:
+      host: ${REDIS_HOST:localhost}
+      port: ${REDIS_PORT:6379}
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: ${AUTH_SERVER_ISSUER:http://localhost:9000}
+server:
+  port: ${PORT:8081}
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,metrics,prometheus
+triminds:
+  identity:
+    max-failed-login-attempts: 5
+    default-lock-duration-minutes: 30
