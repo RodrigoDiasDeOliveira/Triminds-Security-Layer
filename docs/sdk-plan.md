@@ -1,24 +1,24 @@
-# Plano de SDKs Multi-linguagem
+# Multi-Language SDK Plan
 
-## Visão geral
+## Overview
 
-Os SDKs são peças-chave para tornar o Triminds Security Layer fácil de adotar em diferentes ecossistemas.
+SDKs are key components to make Triminds Security Layer easy to adopt across different ecosystems.
 
-### Objetivos principais
+### Primary Objectives
 
-- validar tokens e gerenciar sessões de forma consistente;
-- oferecer integrações simples com o Security Gateway;
-- padronizar chamadas de auditoria, logs e eventos de risco;
-- suportar políticas dinâmicas e autorização adaptativa.
+- Validate tokens and manage sessions consistently
+- Offer simple integrations with Security Gateway
+- Standardize audit calls, logs, and risk events
+- Support dynamic policies and adaptive authorization
 
-## Estratégia de rollout
+## Rollout Strategy
 
-1. `typescript/` como SDK de referência para front-end e Node.js.
-2. `java/` para clientes corporativos e integração com Spring Boot.
-3. `python/` para automação, data science e serviços serverless.
-4. `go/` para infraestrutura, agentes e serviços de baixa latência.
+1. `typescript/` as the reference SDK for front-end and Node.js
+2. `java/` for enterprise clients and Spring Boot integration
+3. `python/` for automation, data science, and serverless services
+4. `go/` for infrastructure, agents, and low-latency services
 
-## Módulos essenciais
+## Essential Modules
 
 - Auth client
 - Gateway client
@@ -26,9 +26,9 @@ Os SDKs são peças-chave para tornar o Triminds Security Layer fácil de adotar
 - Audit client
 - Common models / DTOs
 
-## Padrões e APIs esperadas
+## Expected Patterns and APIs
 
-- suporte a JWT e OAuth2
-- conexões seguras via HTTPS
-- integração com OPA para políticas de decisão
-- documentação de endpoints e exemplos de uso
+- JWT and OAuth2 support
+- Secure connections via HTTPS
+- Integration with OPA for policy decisions
+- Endpoint documentation and usage examples

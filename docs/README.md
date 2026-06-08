@@ -1,35 +1,62 @@
-# Documentation
+# Triminds Security Layer
 
-This folder contains architecture documentation and decision records for the Triminds Security Layer.
+**🛡️ Intelligent Security Framework for Distributed Systems**
+
+A modular **Identity & Security Platform** designed to support high-scale, secure, and compliant applications at Triminds.
+
+---
 
 ## Overview
 
-The Triminds Security Layer is a modular security platform built as a Maven monorepo, with backend services in Spring Boot and a React-based Admin Console.
+The Triminds Security Layer is a comprehensive and reusable security platform that centralizes identity, authorization, risk detection, and compliance for modern distributed systems.
 
-## Included ADRs
+### Four Core Pillars
 
-The repository defines architecture decisions for the frontend, backend, and platform structure:
+1. **Identity and Access Management (IAM)**
+2. **Application & API Security**
+3. **Risk Monitoring & AI Detection**
+4. **Governance & Compliance**
 
-- `ADR-0000-Index.md` - ADR navigation index
-- `ADR-0001-Monorepo-Design-System.md` - Monorepo and shared design system strategy
-- `ADR-0002-Theming-Strategy.md` - UI theming strategy for the admin console
-- `ADR-0003-Component-Layering.md` - Component layering and reuse
-- `ADR-0004-AppShell-Architecture.md` - Admin console shell and layout
-- `ADR-0005-Page-Patterns.md` - Page patterns and UX consistency
-- `ADR-0006-Package-Boundaries.md` - Package/module boundaries in the monorepo
-- `ADR-0007-State-Management-Strategy.md` - State management approach for the console
-- `ADR-0008-Data-Fetching-Layer.md` - Shared data fetching architecture
-- `ADR-0009-Plugin-Architecture.md` - Future plugin extensibility strategy
-- `ADR-0010-Routing-Strategy.md` - Client-side routing strategy
-- `ADR-0011-Multi-Tenant-System.md` - Multi-tenant platform strategy
+---
 
-## Architecture summary
+## Monorepo Structure
 
-- Backend is split into dedicated Spring Boot modules for identity, auth, access control, policy, risk, gateway, intelligence, and audit.
-- `shared` contains common models and utilities.
-- `admin-console` is a React + Vite application with a sidebar AppShell and core page scaffolding.
-- `sdks` is reserved for multi-language client SDKs across Java, TypeScript, Python, and Go.
+| Module                        | Responsibility |
+|-------------------------------|----------------|
+| `security-identity`           | Identity Provider (OAuth2 / OIDC) |
+| `security-auth`               | Authentication, MFA, SSO, Tokens |
+| `security-access-control`     | RBAC + ABAC + Access Policies |
+| `security-policy-engine`      | Policy Engine (OPA) |
+| `security-risk-engine`        | AI/ML Risk Engine |
+| `security-gateway`            | Security API Gateway |
+| `security-intelligence`       | Observability & Anomaly Detection |
+| `security-audit`              | Immutable Audit Log |
+| `admin-console`               | Management UI (React + Triminds UI) |
+| `shared`                      | Shared models, events and utilities |
+| `sdks`                        | Official SDKs (Java, TypeScript, Python, Go) |
 
-## Usage
+---
 
-Use this docs folder as the source of truth for architectural decisions, design direction, and future platform evolution.
+## Tech Stack
+
+- **Backend**: Java 21 + Spring Boot 3.4
+- **Identity**: Spring Authorization Server
+- **Policies**: Open Policy Agent (OPA)
+- **Risk & AI**: LangChain4j
+- **Database**: PostgreSQL + Redis
+- **Observability**: OpenTelemetry + Grafana
+- **Frontend**: React + Vite + Triminds UI Core
+
+---
+
+## Getting Started
+
+```bash
+# Clone the repository
+git clone https://github.com/RodrigoDiasDeOliveira/Triminds-Security-Layer.git
+
+# Build shared modules
+mvn clean install -pl shared -am
+
+# Run a service (example)
+mvn spring-boot:run -pl security-identity

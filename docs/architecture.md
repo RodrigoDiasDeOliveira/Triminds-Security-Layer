@@ -1,34 +1,35 @@
-# Arquitetura do Triminds Security Layer
+# Triminds Security Layer Architecture
 
-## Objetivo
-Criar uma plataforma centralizada de identidade, controle e proteção para sistemas distribuídos, composta por serviços especializados e uma interface de gestão.
+## Objective
 
-## Componentes principais
+Create a centralized identity, access control, and protection platform for distributed systems, composed of specialized services and a management interface.
+
+## Core Components
 
 - Security Core
-  - autenticação
-  - autorização
-  - políticas
+  - Authentication
+  - Authorization
+  - Policies
 
 - Security Gateway
-  - intercepta APIs
-  - valida tokens
-  - aplica regras
+  - Intercepts APIs
+  - Validates tokens
+  - Applies rules
 
 - Policy Engine
-  - regras dinâmicas
-  - políticas de comportamento
+  - Dynamic rules
+  - Behavioral policies
 
 - Audit & Observability Layer
-  - logs estruturados
-  - eventos de segurança
+  - Structured logs
+  - Security events
 
 - Admin Console
-  - gestão de usuários
-  - visualização de riscos
-  - configuração de políticas
+  - User management
+  - Risk visualization
+  - Policy configuration
 
-## Tecnologias sugeridas
+## Recommended Technologies
 
 - Java 21
 - Spring Boot 3.4
@@ -38,9 +39,9 @@ Criar uma plataforma centralizada de identidade, controle e proteção para sist
 - OPA (Open Policy Agent)
 - LangChain4j
 
-## Pilares do produto
+## Product Pillars
 
-1. Identidade e acesso (IAM)
-2. Segurança de aplicação e APIs
-3. Monitoramento e detecção de risco
-4. Governança e compliance
+1. Identity and Access (IAM)
+2. Application and API Security
+3. Risk Monitoring and Detection
+4. Governance and Compliance
