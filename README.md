@@ -9,9 +9,6 @@ A smart security framework for distributed systems at Triminds.
 
 This repository aims to deliver a reusable security platform for Triminds applications, built as a modular Identity & Security Platform.
 
-
-<img width="784" height="1168" alt="yn1kE" src="https://github.com/user-attachments/assets/6d743c24-f138-49a4-8c34-9c12262b658c" />
-
 ### Four pillars
 
 1. Identity and Access Management (IAM)
