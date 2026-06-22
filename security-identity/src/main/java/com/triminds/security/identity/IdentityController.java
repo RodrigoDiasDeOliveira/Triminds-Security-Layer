@@ -1,30 +1,21 @@
-package com.triminds.security.identity;
-
-import com.triminds.security.shared.model.User;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
-
-import java.util.Collections;
-import java.util.Set;
-
 @RestController
-@RequestMapping("/identity")
+@RequestMapping("/identities")
 public class IdentityController {
 
-    private final IdentityService identityService;
+    private final CreateIdentityUseCase createIdentity;
 
-    public IdentityController(IdentityService identityService) {
-        this.identityService = identityService;
+    public IdentityController(CreateIdentityUseCase createIdentity) {
+        this.createIdentity = createIdentity;
     }
 
-    @GetMapping("/me")
-    public User getCurrentUser() {
-        return identityService.getCurrentUser();
+    @PostMapping
+    public String create(@RequestBody CreateRequest req) {
+        return createIdentity.execute(req.email(), req.password())
+                .getId().toString();
     }
 
-    @GetMapping("/roles")
-    public Set<String> getRoles() {
-        return identityService.getAvailableRoles();
+    @GetMapping("/health")
+    public String health() {
+        return "identity-ok";
     }
 }
