@@ -1,10 +1,24 @@
-server:
-  port: 8082
-
 spring:
   application:
     name: security-auth
+  data:
+    redis:
+      host: ${REDIS_HOST:localhost}
+      port: ${REDIS_PORT:6379}
 
-logging:
-  level:
-    root: INFO
+server:
+  port: ${AUTH_PORT:8082}
+
+triminds:
+  auth:
+    jwt:
+      issuer: ${JWT_ISSUER:https://triminds.com}
+      audience: ${JWT_AUDIENCE:triminds-api}
+      ttl-seconds: ${JWT_TTL:900}
+      key-id: ${JWT_KEY_ID:triminds-rsa-1}
+  clients:
+    identity:
+      url: ${IDENTITY_URL:http://localhost:8081}
+
+management:
+  endpoints.web.exposure.include: health,info,prometheus,metrics

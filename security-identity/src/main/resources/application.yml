@@ -12,6 +12,7 @@ spring:
       hibernate.jdbc.time_zone: UTC
   flyway:
     enabled: true
+<<<<<<< HEAD
     locations: classpath:db/migration
   kafka:
     bootstrap-servers: ${KAFKA_BOOTSTRAP:localhost:9092}
@@ -19,6 +20,19 @@ spring:
       key-serializer: org.apache.kafka.common.serialization.StringSerializer
       value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
 
+=======
+    locations: classpath:db
+    baseline-on-migrate: true
+  data:
+    redis:
+      host: ${REDIS_HOST:localhost}
+      port: ${REDIS_PORT:6379}
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: ${AUTH_SERVER_ISSUER:http://localhost:9000}
+>>>>>>> 921f2ae (source code refactor module, auth,shared,identity)
 server:
   port: ${IDENTITY_PORT:8081}
 
