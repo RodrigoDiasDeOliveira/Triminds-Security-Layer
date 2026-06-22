@@ -1,41 +1,27 @@
 spring:
   application:
-    name: triminds-security-identity
+    name: security-identity
   datasource:
     url: ${IDENTITY_DB_URL:jdbc:postgresql://localhost:5432/triminds_identity}
     username: ${IDENTITY_DB_USER:triminds}
-    password: ${IDENTITY_DB_PASS:triminds}
-    hikari:
-      maximum-pool-size: 20
-      minimum-idle: 5
+    password: ${IDENTITY_DB_PASSWORD:triminds}
   jpa:
     hibernate:
       ddl-auto: validate
     properties:
-      hibernate:
-        dialect: org.hibernate.dialect.PostgreSQLDialect
-    open-in-view: false
+      hibernate.jdbc.time_zone: UTC
   flyway:
     enabled: true
     locations: classpath:db/migration
-    baseline-on-migrate: true
-  data:
-    redis:
-      host: ${REDIS_HOST:localhost}
-      port: ${REDIS_PORT:6379}
-  security:
-    oauth2:
-      resourceserver:
-        jwt:
-          issuer-uri: ${AUTH_SERVER_ISSUER:http://localhost:9000}
+  kafka:
+    bootstrap-servers: ${KAFKA_BOOTSTRAP:localhost:9092}
+    producer:
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
+
 server:
-  port: ${PORT:8081}
+  port: ${IDENTITY_PORT:8081}
+
 management:
-  endpoints:
-    web:
-      exposure:
-        include: health,info,metrics,prometheus
-triminds:
-  identity:
-    max-failed-login-attempts: 5
-    default-lock-duration-minutes: 30
+  endpoints.web.exposure.include: health,info,prometheus,metrics
+  endpoint.health.show-details: when_authorized
