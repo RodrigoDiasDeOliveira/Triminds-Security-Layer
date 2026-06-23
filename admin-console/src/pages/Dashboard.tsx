@@ -1,15 +1,3 @@
-function Dashboard() {
-  return (
-    <section>
-      <h2>Visão geral</h2>
-      <p>Resumo de usuários, autenticações e riscos em um único painel.</p>
-      <div className="cards">
-        <div className="card">Usuários ativos</div>
-        <div className="card">Eventos de risco</div>
-        <div className="card">Status do gateway</div>
-      </div>
-    </section>
-  );
+export default function Dashboard() {
+  return <div><h1>Triminds Security Layer</h1><p>Admin console — placeholder. Conecte ao gateway via VITE_GATEWAY_URL.</p></div>;
 }
-
-export default Dashboard;

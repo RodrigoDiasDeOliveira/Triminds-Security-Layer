@@ -1,10 +1,18 @@
-server:
-  port: 8085
-
+server: { port: 8086 }
 spring:
-  application:
-    name: security-risk-engine
-
-logging:
-  level:
-    root: INFO
+  application: { name: security-risk-engine }
+  data:
+    redis: { host: ${REDIS_HOST:localhost}, port: ${REDIS_PORT:6379} }
+  kafka:
+    bootstrap-servers: ${KAFKA_BOOTSTRAP:localhost:29092}
+    producer:
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.apache.kafka.common.serialization.StringSerializer
+  security:
+    oauth2:
+      resourceserver:
+        jwt: { jwk-set-uri: ${AUTH_JWKS_URI:http://localhost:8082/.well-known/jwks.json} }
+management:
+  endpoints:
+    web:
+      exposure: { include: health,info,prometheus }

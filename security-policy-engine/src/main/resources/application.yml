@@ -1,10 +1,25 @@
 server:
   port: 8084
-
 spring:
-  application:
-    name: security-policy-engine
-
-logging:
-  level:
-    root: INFO
+  application: { name: security-policy-engine }
+  datasource:
+    url: ${DB_URL:jdbc:postgresql://localhost:5432/policy}
+    username: ${DB_USER:triminds}
+    password: ${DB_PASS:triminds}
+  jpa:
+    hibernate: { ddl-auto: validate }
+  flyway: { enabled: true }
+  data:
+    redis: { host: ${REDIS_HOST:localhost}, port: ${REDIS_PORT:6379} }
+  security:
+    oauth2:
+      resourceserver:
+        jwt: { jwk-set-uri: ${AUTH_JWKS_URI:http://localhost:8082/.well-known/jwks.json} }
+opa:
+  url: ${OPA_URL:http://localhost:8181}
+policy:
+  cache: { ttl-seconds: 30 }
+management:
+  endpoints:
+    web:
+      exposure: { include: health,info,prometheus }

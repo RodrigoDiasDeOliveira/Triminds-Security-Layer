@@ -1,27 +1,55 @@
 version: "3.9"
+
 services:
   postgres:
     image: postgres:16-alpine
     environment:
       POSTGRES_USER: triminds
       POSTGRES_PASSWORD: triminds
-      POSTGRES_DB: triminds_identity
+      POSTGRES_MULTIPLE_DATABASES: identity,auth,access_control,policy,audit,risk
     ports: ["5432:5432"]
-    volumes: [pgdata:/var/lib/postgresql/data]
+    volumes:
+      - ./infra/postgres-init.sh:/docker-entrypoint-initdb.d/00-init.sh:ro
+      - pgdata:/var/lib/postgresql/data
+
   redis:
     image: redis:7-alpine
     ports: ["6379:6379"]
-  kafka:
-    image: bitnami/kafka:3.7
+
+  zookeeper:
+    image: confluentinc/cp-zookeeper:7.6.0
     environment:
-      KAFKA_CFG_NODE_ID: 1
-      KAFKA_CFG_PROCESS_ROLES: controller,broker
-      KAFKA_CFG_LISTENERS: PLAINTEXT://:9092,CONTROLLER://:9093
-      KAFKA_CFG_ADVERTISED_LISTENERS: PLAINTEXT://localhost:9092
-      KAFKA_CFG_CONTROLLER_LISTENER_NAMES: CONTROLLER
-      KAFKA_CFG_LISTENER_SECURITY_PROTOCOL_MAP: CONTROLLER:PLAINTEXT,PLAINTEXT:PLAINTEXT
-      KAFKA_CFG_CONTROLLER_QUORUM_VOTERS: 1@localhost:9093
-      ALLOW_PLAINTEXT_LISTENER: "yes"
-    ports: ["9092:9092"]
+      ZOOKEEPER_CLIENT_PORT: 2181
+
+  kafka:
+    image: confluentinc/cp-kafka:7.6.0
+    depends_on: [zookeeper]
+    environment:
+      KAFKA_BROKER_ID: 1
+      KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
+      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://kafka:9092,PLAINTEXT_HOST://localhost:29092
+      KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: PLAINTEXT:PLAINTEXT,PLAINTEXT_HOST:PLAINTEXT
+      KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
+    ports: ["29092:29092"]
+
+  opa:
+    image: openpolicyagent/opa:0.69.0
+    command: ["run", "--server", "--log-level=info"]
+    ports: ["8181:8181"]
+
+  prometheus:
+    image: prom/prometheus:v2.55.0
+    ports: ["9090:9090"]
+    volumes:
+      - ./infra/prometheus.yml:/etc/prometheus/prometheus.yml:ro
+
+  grafana:
+    image: grafana/grafana:11.3.0
+    ports: ["3000:3000"]
+
+  jaeger:
+    image: jaegertracing/all-in-one:1.62
+    ports: ["16686:16686", "4317:4317", "4318:4318"]
+
 volumes:
-  pgdata: {}
+  pgdata:
