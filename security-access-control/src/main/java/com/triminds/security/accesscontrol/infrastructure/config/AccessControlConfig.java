@@ -1,11 +1,8 @@
 package com.triminds.security.accesscontrol.infrastructure.config;
 
 import org.springframework.context.annotation.Configuration;
-import org.springframework.cloud.openfeign.EnableFeignClients;
-import org.springframework.kafka.annotation.EnableKafka;
+import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 @Configuration
-@EnableFeignClients(basePackages = "com.triminds.security.accesscontrol.infrastructure.policy")
-@EnableKafka
-public class AccessControlConfig {
-}
+@EnableJpaRepositories(basePackages = "com.triminds.security.accesscontrol.infrastructure.persistence.repository")
+public class AccessControlConfig {}

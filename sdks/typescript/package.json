@@ -1,0 +1,11 @@
+{
+  "name": "@triminds/security-sdk",
+  "version": "1.0.0",
+  "description": "Triminds Security Layer TypeScript SDK",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": { "build": "tsc -p tsconfig.json" },
+  "dependencies": { "axios": "^1.7.7" },
+  "peerDependencies": { "@tanstack/react-query": ">=5", "react": ">=18" },
+  "devDependencies": { "typescript": "^5.6.0", "@types/react": "^18" }
+}

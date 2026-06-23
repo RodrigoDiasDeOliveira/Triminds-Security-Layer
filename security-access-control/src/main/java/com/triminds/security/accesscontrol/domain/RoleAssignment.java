@@ -1,28 +1,6 @@
 package com.triminds.security.accesscontrol.domain;
 
-
-import lombok.Builder;
-import lombok.Getter;
-
-
+import java.time.Instant;
 import java.util.UUID;
 
-
-@Getter
-@Builder
-public class RoleAssignment {
-
-
-private UUID id;
-
-
-private UUID tenantId;
-
-
-private UUID identityId;
-
-
-private UUID roleId;
-
-
-}
+public record RoleAssignment(UUID id, UUID tenantId, UUID identityId, UUID roleId, Instant createdAt) {}

@@ -1,33 +1,8 @@
 package com.triminds.security.accesscontrol.application.port;
 
-
-import com.triminds.security.accesscontrol.domain.Permission;
-
-
-import java.util.Optional;
 import java.util.UUID;
 
-
 public interface PermissionRepositoryPort {
-
-
-Permission save(Permission permission);
-
-
-
-Optional<Permission> findById(UUID id);
-
-
-
-boolean existsPermission(
-
-UUID identityId,
-
-String action,
-
-String resource
-
-);
-
-
+    /** Existe permissão (action,resource) atribuída ao identity via algum role do tenant? */
+    boolean existsPermission(UUID tenantId, UUID identityId, String action, String resource);
 }

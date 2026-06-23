@@ -1,23 +1,32 @@
 package com.triminds.security.accesscontrol.infrastructure.web.exception;
 
+import jakarta.validation.ConstraintViolationException;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ProblemDetail;
+import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
-import java.net.URI;
+import java.util.stream.Collectors;
 
 @RestControllerAdvice
 public class AccessControlExceptionHandler {
 
-    @ExceptionHandler(RuntimeException.class)
-    public ProblemDetail handle(RuntimeException ex) {
+    @ExceptionHandler(IllegalArgumentException.class)
+    public ProblemDetail badArg(IllegalArgumentException e) {
+        return ProblemDetail.forStatusAndDetail(HttpStatus.BAD_REQUEST, e.getMessage());
+    }
 
-        ProblemDetail problem = ProblemDetail.forStatus(403);
+    @ExceptionHandler(MethodArgumentNotValidException.class)
+    public ProblemDetail invalid(MethodArgumentNotValidException e) {
+        String msg = e.getBindingResult().getFieldErrors().stream()
+                .map(f -> f.getField() + " " + f.getDefaultMessage())
+                .collect(Collectors.joining("; "));
+        return ProblemDetail.forStatusAndDetail(HttpStatus.BAD_REQUEST, msg);
+    }
 
-        problem.setTitle("Access Control Error");
-        problem.setDetail(ex.getMessage());
-        problem.setType(URI.create("https://triminds/security/access-control/error"));
-
-        return problem;
+    @ExceptionHandler(ConstraintViolationException.class)
+    public ProblemDetail violation(ConstraintViolationException e) {
+        return ProblemDetail.forStatusAndDetail(HttpStatus.BAD_REQUEST, e.getMessage());
     }
 }

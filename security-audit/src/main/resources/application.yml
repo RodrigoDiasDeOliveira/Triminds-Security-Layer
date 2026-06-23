@@ -1,10 +1,25 @@
-server:
-  port: 8087
-
+server: { port: 8088 }
 spring:
-  application:
-    name: security-audit
-
-logging:
-  level:
-    root: INFO
+  application: { name: security-audit }
+  datasource:
+    url: ${DB_URL:jdbc:postgresql://localhost:5432/audit}
+    username: ${DB_USER:triminds}
+    password: ${DB_PASS:triminds}
+  jpa:
+    hibernate: { ddl-auto: validate }
+  flyway: { enabled: true }
+  kafka:
+    bootstrap-servers: ${KAFKA_BOOTSTRAP:localhost:29092}
+    consumer:
+      group-id: security-audit
+      auto-offset-reset: earliest
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+  security:
+    oauth2:
+      resourceserver:
+        jwt: { jwk-set-uri: ${AUTH_JWKS_URI:http://localhost:8082/.well-known/jwks.json} }
+management:
+  endpoints:
+    web:
+      exposure: { include: health,info,prometheus }

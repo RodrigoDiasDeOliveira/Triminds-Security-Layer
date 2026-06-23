@@ -1,79 +1,61 @@
 server:
-
   port: 8083
 
-
-
 spring:
-
   application:
-
     name: security-access-control
 
-
-
   datasource:
-
     url: ${DB_URL:jdbc:postgresql://localhost:5432/access_control}
-
-    username: ${DB_USER:access}
-
-    password: ${DB_PASS:access}
-
-
+    username: ${DB_USER:triminds}
+    password: ${DB_PASS:triminds}
 
   jpa:
-
     hibernate:
-
       ddl-auto: validate
-
-
     properties:
-
       hibernate:
-
         jdbc:
-
           time_zone: UTC
 
-
-
   flyway:
-
     enabled: true
 
-
-
   data:
-
     redis:
-
       host: ${REDIS_HOST:localhost}
+      port: ${REDIS_PORT:6379}
 
-      port: 6379
+  kafka:
+    bootstrap-servers: ${KAFKA_BOOTSTRAP:localhost:29092}
+    producer:
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.apache.kafka.common.serialization.StringSerializer
+      acks: all
 
-
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          jwk-set-uri: ${AUTH_JWKS_URI:http://localhost:8082/.well-known/jwks.json}
 
 policy:
-
   service:
-
     url: ${POLICY_ENGINE_URL:http://localhost:8084}
 
+access-control:
+  cache:
+    ttl-seconds: 60
 
 management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,prometheus
+  endpoint:
+    health:
+      show-details: when-authorized
 
- endpoints:
-
-   web:
-
-    exposure:
-
-     include:
-
-      - health
-
-      - info
-
-      - prometheus
+springdoc:
+  swagger-ui:
+    path: /swagger-ui.html
