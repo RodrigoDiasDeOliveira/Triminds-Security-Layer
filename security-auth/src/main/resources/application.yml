@@ -5,6 +5,13 @@ spring:
     redis:
       host: ${REDIS_HOST:localhost}
       port: ${REDIS_PORT:6379}
+  cloud:
+    openfeign:
+      client:
+        config:
+          default:
+            connectTimeout: 3000
+            readTimeout: 5000
 
 server:
   port: ${AUTH_PORT:8082}
@@ -16,9 +23,14 @@ triminds:
       audience: ${JWT_AUDIENCE:triminds-api}
       ttl-seconds: ${JWT_TTL:900}
       key-id: ${JWT_KEY_ID:triminds-rsa-1}
+      # caminho para chave RSA persistente (gera se ausente)
+      key-store-path: ${JWT_KEY_PATH:./data/auth-jwt.pem}
   clients:
     identity:
       url: ${IDENTITY_URL:http://localhost:8081}
 
 management:
-  endpoints.web.exposure.include: health,info,prometheus,metrics
+  endpoints:
+    web:
+      exposure:
+        include: health,info,prometheus,metrics

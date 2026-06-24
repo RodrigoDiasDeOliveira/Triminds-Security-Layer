@@ -1,5 +1,6 @@
 package com.triminds.auth.infrastructure.jwt;
 
+import com.triminds.auth.Jwt.key;
 import com.nimbusds.jose.jwk.JWKSet;
 import com.nimbusds.jose.jwk.RSAKey;
 import org.springframework.beans.factory.annotation.Value;
