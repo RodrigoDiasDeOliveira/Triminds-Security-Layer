@@ -4,7 +4,7 @@ import org.springframework.stereotype.Service;
 
 import com.triminds.security.identity.application.usecase.ActivateIdentityUseCase;
 import com.triminds.security.identity.domain.Identity;
-import com.triminds.security.identity.domain.IdentityId;
+
 
 
 @Service

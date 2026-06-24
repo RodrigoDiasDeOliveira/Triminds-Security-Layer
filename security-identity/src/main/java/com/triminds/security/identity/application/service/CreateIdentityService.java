@@ -3,8 +3,8 @@ package com.triminds.security.identity.application.service;
 import org.springframework.stereotype.Service;
 
 import com.triminds.security.identity.application.usecase.CreateIdentityUseCase;
-import com.triminds.security.identity.domain.model.Identity;
-import com.triminds.security.identity.domain.repository.IdentityRepository;
+import com.triminds.security.identity.domain.Identity;
+
 
 @Service
 public class CreateIdentityService implements CreateIdentityUseCase {
