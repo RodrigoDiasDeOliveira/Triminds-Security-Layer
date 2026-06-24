@@ -3,7 +3,7 @@ package com.triminds.security.identity.infrastructure.persistence;
 import com.triminds.security.identity.application.ports.CredentialRepositoryPort;
 import com.triminds.security.identity.domain.Credential;
 import com.triminds.security.identity.infrastructure.persistence.entity.CredentialEntity;
-import com.triminds.security.identity.infrastructure.persistence.repository.CredentialJpaRepository;
+
 import org.springframework.stereotype.Repository;
 import java.util.Optional;
 import java.util.UUID;

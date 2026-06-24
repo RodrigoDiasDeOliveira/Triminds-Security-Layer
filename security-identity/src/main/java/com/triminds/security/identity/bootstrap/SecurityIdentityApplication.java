@@ -7,9 +7,9 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 @SpringBootApplication
-@ComponentScan(basePackages = {"io.triminds.identity", "io.triminds.shared"})
-@EntityScan("io.triminds.identity.infrastructure.persistence.entity")
-@EnableJpaRepositories("io.triminds.identity.infrastructure.persistence.repository")
+@ComponentScan(basePackages = {"com.triminds.identity", "com.triminds.shared"})
+@EntityScan("com.triminds.identity.infrastructure.persistence.entity")
+@EnableJpaRepositories("com.triminds.identity.infrastructure.persistence.repository")
 public class SecurityIdentityApplication {
     public static void main(String[] args) { SpringApplication.run(SecurityIdentityApplication.class, args); }
 }

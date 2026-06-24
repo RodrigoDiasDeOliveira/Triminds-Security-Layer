@@ -3,7 +3,7 @@ package com.triminds.security.identity.application.usecase;
 import com.triminds.security.identity.application.ports.*;
 import com.triminds.security.identity.domain.Credential;
 import com.triminds.security.identity.domain.Identity;
-import com.triminds.shared.errors.DomainException;
+import com.triminds.security.shared.errors.DomainException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
