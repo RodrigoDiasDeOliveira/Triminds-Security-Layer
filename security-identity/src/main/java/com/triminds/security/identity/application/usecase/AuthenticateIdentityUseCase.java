@@ -1,4 +1,4 @@
-package com.triminds.security.identity.application.usecase.triminds.identity.application.usecase;
+package com.triminds.security.identity.application.usecase;
 
 import com.triminds.security.identity.application.ports.*;
 import com.triminds.security.identity.domain.Identity;
