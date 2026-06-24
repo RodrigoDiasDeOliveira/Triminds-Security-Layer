@@ -21,8 +21,6 @@ Este diretório define a estratégia dos SDKs multi-linguagem para adotar a plat
 
 - `java/README.md`
 - `typescript/README.md`
-- `python/README.md`
-- `go/README.md`
 
 ## Próximo passo
 
