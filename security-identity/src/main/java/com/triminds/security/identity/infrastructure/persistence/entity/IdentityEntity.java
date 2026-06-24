@@ -1,4 +1,4 @@
-package io.triminds.security.identity.infrastructure.persistence.entity;
+package com.triminds.security.identity.infrastructure.persistence.entity;
 
 import com.triminds.security.identity.domain.IdentityStatus;
 import jakarta.persistence.*;

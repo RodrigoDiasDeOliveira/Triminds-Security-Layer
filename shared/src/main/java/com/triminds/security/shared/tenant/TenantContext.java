@@ -1,7 +1,12 @@
-package com.triminds.shared.tenant;
+package com.triminds.security.shared.tenant;
 
-public record TenantContext(String tenantId, String correlationId) {
-    public static TenantContext of(String tenantId, String correlationId) {
-        return new TenantContext(tenantId, correlationId);
-    }
+import java.util.UUID;
+
+/** Acesso ao tenant corrente via ThreadLocal (preenchido por filter no gateway / em cada serviço). */
+public final class TenantContext {
+    private static final ThreadLocal<UUID> CURRENT = new ThreadLocal<>();
+    public static void set(UUID tenantId) { CURRENT.set(tenantId); }
+    public static UUID get() { return CURRENT.get(); }
+    public static void clear() { CURRENT.remove(); }
+    private TenantContext() {}
 }

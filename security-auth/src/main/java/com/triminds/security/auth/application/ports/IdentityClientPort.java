@@ -1,4 +1,4 @@
-package com.triminds.auth.application.ports;
+package com.triminds.security.auth.application.ports;
 
 public interface IdentityClientPort {
     AuthenticatedUser authenticate(String tenantId, String username, String password);

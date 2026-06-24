@@ -1,4 +1,4 @@
-package com.triminds.shared.tenant;
+package com.triminds.security.shared.tenant;
 
 public final class TenantHolder {
     private static final ThreadLocal<TenantContext> CTX = new ThreadLocal<>();

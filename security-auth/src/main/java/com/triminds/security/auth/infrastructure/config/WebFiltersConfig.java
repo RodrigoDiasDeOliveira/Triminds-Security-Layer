@@ -1,7 +1,7 @@
-package com.triminds.auth.infrastructure.config;
+package com.triminds.security.auth.infrastructure.config;
 
-import com.triminds.shared.web.CorrelationIdFilter;
-import com.triminds.shared.web.TenantResolverFilter;
+import com.triminds.security.shared.web.CorrelationIdFilter;
+import com.triminds.security.shared.web.TenantResolverFilter;
 import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

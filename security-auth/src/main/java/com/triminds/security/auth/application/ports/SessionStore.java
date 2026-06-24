@@ -1,6 +1,6 @@
-package com.triminds.auth.application.ports;
+package com.triminds.securityauth.application.ports;
 
-import com.triminds.auth.domain.AuthSession;
+import com.triminds.security.auth.domain.AuthSession;
 import java.util.Optional;
 
 public interface SessionStorePort {

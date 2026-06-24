@@ -1,6 +1,6 @@
-package com.triminds.auth.application.ports;
+package com.triminds.security.auth.application.ports;
 
-import com.triminds.shared.risk.RiskScore;
+import com.triminds.security.shared.risk.RiskScore;
 import java.util.Map;
 
 public interface RiskEvaluationPort {

@@ -1,6 +1,6 @@
-package com.triminds.auth.infrastructure.client;
+package com.triminds.security.auth.infrastructure.client;
 
-import com.triminds.auth.application.ports.IdentityClientPort;
+import com.triminds.security.auth.application.ports.IdentityClientPort;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.PostMapping;

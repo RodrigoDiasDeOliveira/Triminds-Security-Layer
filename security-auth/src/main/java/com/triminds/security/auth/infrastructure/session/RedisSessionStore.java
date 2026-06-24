@@ -1,8 +1,8 @@
-package com.triminds.auth.infrastructure.session;
+package com.triminds.security.auth.infrastructure.session;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.triminds.auth.application.ports.SessionStorePort;
-import com.triminds.auth.domain.AuthSession;
+import com.triminds.security.auth.application.ports.SessionStorePort;
+import com.triminds.security.auth.domain.AuthSession;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.stereotype.Component;
 

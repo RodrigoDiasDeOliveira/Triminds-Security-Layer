@@ -1,4 +1,4 @@
-package com.triminds.shared.security;
+package com.triminds.security.shared.security;
 
 import java.util.List;
 

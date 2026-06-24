@@ -1,4 +1,4 @@
-package com.triminds.shared.audit;
+package com.triminds.security.shared.audit;
 
 import java.time.Instant;
 import java.util.Map;

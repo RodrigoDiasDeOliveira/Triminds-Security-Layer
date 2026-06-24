@@ -1,7 +1,7 @@
-package com.triminds.auth.infrastructure.client;
+package com.triminds.security.auth.infrastructure.client;
 
-import com.triminds.auth.application.ports.RiskEvaluationPort;
-import com.triminds.shared.risk.RiskScore;
+import com.triminds.security.auth.application.ports.RiskEvaluationPort;
+import com.triminds.security.shared.risk.RiskScore;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.stereotype.Component;

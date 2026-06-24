@@ -1,4 +1,4 @@
-package com.triminds.auth.infrastructure.jwt;
+package com.triminds.security.auth.infrastructure.jwt;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;

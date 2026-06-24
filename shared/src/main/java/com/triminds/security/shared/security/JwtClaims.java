@@ -1,16 +1,15 @@
-package com.triminds.shared.security;
+package com.triminds.security.shared.jwt;
 
-import java.time.Instant;
 import java.util.List;
+import java.util.UUID;
 
+/** Claims padronizadas emitidas pelo security-auth. */
 public record JwtClaims(
-        String subject,
-        String tenantId,
-        String sessionId,
+        UUID sub,        // identityId
+        UUID tid,        // tenantId
+        String email,
         List<String> roles,
         List<String> scopes,
-        Instant issuedAt,
-        Instant expiresAt,
-        String issuer,
-        String audience
+        long iat,
+        long exp
 ) {}

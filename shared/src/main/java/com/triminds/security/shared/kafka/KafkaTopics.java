@@ -1,4 +1,4 @@
-package com.triminds.shared.kafka;
+package com.triminds.security.shared.kafka;
 
 public final class KafkaTopics {
     private KafkaTopics() {}

@@ -1,4 +1,4 @@
-package com.triminds.shared.errors;
+package com.triminds.security.shared.errors;
 
 public class DomainException extends RuntimeException {
     private final String code;

@@ -1,10 +1,10 @@
-package com.triminds.auth.infrastructure.web;
+package com.triminds.security.auth.infrastructure.web;
 
-import com.triminds.auth.application.usecase.LoginUseCase;
-import com.triminds.auth.application.usecase.LogoutUseCase;
-import com.triminds.auth.application.usecase.RefreshTokenUseCase;
-import com.triminds.auth.domain.TokenPair;
-import com.triminds.shared.tenant.TenantHolder;
+import com.triminds.security.auth.application.usecase.LoginUseCase;
+import com.triminds.security.auth.application.usecase.LogoutUseCase;
+import com.triminds.security.auth.application.usecase.RefreshTokenUseCase;
+import com.triminds.security.auth.domain.TokenPair;
+import com.triminds.security.shared.tenant.TenantHolder;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotBlank;

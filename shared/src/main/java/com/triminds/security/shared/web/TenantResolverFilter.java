@@ -1,7 +1,7 @@
-package com.triminds.shared.web;
+package com.triminds.security.shared.web;
 
-import com.triminds.shared.tenant.TenantContext;
-import com.triminds.shared.tenant.TenantHolder;
+import com.triminds.security.shared.tenant.TenantContext;
+import com.triminds.security.shared.tenant.TenantHolder;
 import jakarta.servlet.*;
 import jakarta.servlet.http.HttpServletRequest;
 import org.slf4j.MDC;

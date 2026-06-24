@@ -1,10 +1,11 @@
-package com.triminds.auth.application.usecase;
+package com.triminds.security.auth.application.usecase;
 
-import com.triminds.auth.application.ports.SessionStorePort;
-import com.triminds.auth.application.ports.TokenIssuerPort;
-import com.triminds.auth.domain.AuthSession;
-import com.triminds.auth.domain.TokenPair;
-import com.triminds.shared.errors.DomainException;
+import com.triminds.security.auth.application.ports.SessionStorePort;
+import com.triminds.security.auth.application.ports.TokenIssuerPort;
+import com.triminds.security.auth.domain.AuthSession;
+import com.triminds.security.auth.domain.TokenPair;
+import com.triminds.security.auth.domain.TokenPair;
+import com.triminds.security.shared.errors.DomainException;
 import org.springframework.stereotype.Service;
 import java.time.Instant;
 

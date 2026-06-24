@@ -1,4 +1,4 @@
-package com.triminds.shared.events;
+package com.triminds.security.shared.events;
 
 import java.time.Instant;
 import java.util.Map;

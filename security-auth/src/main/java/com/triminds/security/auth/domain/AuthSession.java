@@ -1,4 +1,4 @@
-package com.triminds.auth.domain;
+package com.triminds.security.auth.domain;
 
 import java.time.Instant;
 import java.util.List;

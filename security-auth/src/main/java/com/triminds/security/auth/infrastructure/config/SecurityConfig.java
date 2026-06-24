@@ -1,7 +1,7 @@
-package com.triminds.auth.infrastructure.config;
+package com.triminds.security.auth.infrastructure.config;
 
 import com.nimbusds.jose.jwk.source.ImmutableJWKSet;
-import com.triminds.auth.infrastructure.jwt.JwtKeyProvider;
+import com.triminds.security.auth.infrastructure.jwt.JwtKeyProvider;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;

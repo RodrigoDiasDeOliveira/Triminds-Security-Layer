@@ -1,6 +1,6 @@
-package com.triminds.auth.application.usecase;
+package com.triminds.security.auth.application.usecase;
 
-import com.triminds.auth.application.ports.SessionStorePort;
+import com.triminds.security.auth.application.ports.SessionStorePort;
 import org.springframework.stereotype.Service;
 
 @Service

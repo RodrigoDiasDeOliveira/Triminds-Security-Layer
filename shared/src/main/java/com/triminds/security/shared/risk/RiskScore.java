@@ -1,4 +1,4 @@
-package com.triminds.shared.risk;
+package com.triminds.security.shared.risk;
 
 import java.util.List;
 

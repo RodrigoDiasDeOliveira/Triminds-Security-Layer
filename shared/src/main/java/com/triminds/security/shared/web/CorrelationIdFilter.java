@@ -1,4 +1,4 @@
-package com.triminds.shared.web;
+package com.triminds.security.shared.web;
 
 import jakarta.servlet.*;
 import jakarta.servlet.http.HttpServletRequest;

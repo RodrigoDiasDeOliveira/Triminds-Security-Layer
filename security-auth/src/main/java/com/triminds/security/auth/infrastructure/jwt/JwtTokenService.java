@@ -1,12 +1,12 @@
-package com.triminds.auth.infrastructure.jwt;
+package com.triminds.security.auth.infrastructure.jwt;
 
 import com.nimbusds.jose.*;
 import com.nimbusds.jose.crypto.RSASSASigner;
 import com.nimbusds.jwt.JWTClaimsSet;
 import com.nimbusds.jwt.SignedJWT;
-import com.triminds.auth.application.ports.TokenIssuerPort;
-import com.triminds.auth.domain.AuthSession;
-import com.triminds.auth.domain.TokenPair;
+import com.triminds.security.auth.application.ports.TokenIssuerPort;
+import com.triminds.security.auth.domain.AuthSession;
+import com.triminds.security.auth.domain.TokenPair;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 

@@ -1,4 +1,4 @@
-package com.triminds.shared.errors;
+package com.triminds.security.shared.errors;
 
 import java.time.Instant;
 import java.util.Map;

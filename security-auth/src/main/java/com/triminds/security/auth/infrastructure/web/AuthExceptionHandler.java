@@ -1,7 +1,7 @@
-package com.triminds.auth.infrastructure.web;
+package com.triminds.security.auth.infrastructure.web;
 
-import com.triminds.shared.errors.ApiError;
-import com.triminds.shared.errors.DomainException;
+import com.triminds.security.shared.errors.ApiError;
+import com.triminds.security.shared.errors.DomainException;
 import org.slf4j.MDC;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ExceptionHandler;
