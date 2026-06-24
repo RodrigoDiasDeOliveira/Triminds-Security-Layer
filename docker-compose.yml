@@ -6,11 +6,17 @@ services:
     environment:
       POSTGRES_USER: triminds
       POSTGRES_PASSWORD: triminds
+      POSTGRES_DB: postgres
       POSTGRES_MULTIPLE_DATABASES: identity,auth,access_control,policy,audit,risk
     ports: ["5432:5432"]
     volumes:
       - ./infra/postgres-init.sh:/docker-entrypoint-initdb.d/00-init.sh:ro
       - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U triminds"]
+      interval: 5s
+      timeout: 3s
+      retries: 20
 
   redis:
     image: redis:7-alpine
@@ -34,7 +40,14 @@ services:
 
   opa:
     image: openpolicyagent/opa:0.69.0
-    command: ["run", "--server", "--log-level=info"]
+    command:
+      - "run"
+      - "--server"
+      - "--log-level=info"
+      - "--addr=0.0.0.0:8181"
+      - "/policies"
+    volumes:
+      - ./infra/opa-policies:/policies:ro
     ports: ["8181:8181"]
 
   prometheus:
@@ -46,6 +59,8 @@ services:
   grafana:
     image: grafana/grafana:11.3.0
     ports: ["3000:3000"]
+    environment:
+      GF_SECURITY_ADMIN_PASSWORD: admin
 
   jaeger:
     image: jaegertracing/all-in-one:1.62
