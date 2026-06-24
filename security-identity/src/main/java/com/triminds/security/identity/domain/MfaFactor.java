@@ -1,4 +1,4 @@
-package com.triminds.identity.domain;
+package com.triminds.security.identity.domain;
 
 import java.time.Instant;
 import java.util.UUID;

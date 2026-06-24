@@ -1,6 +1,6 @@
-package com.triminds.identity.application.ports;
+package com.triminds.security.identity.application.ports;
 
-import com.triminds.identity.domain.Identity;
+import com.triminds.security.identity.domain.Identity;
 import java.util.Optional;
 import java.util.UUID;
 

@@ -1,7 +1,7 @@
-package com.triminds.identity.infrastructure.persistence.mapper;
+package com.triminds.security.identity.infrastructure.persistence.mapper;
 
-import com.triminds.identity.domain.Identity;
-import com.triminds.identity.infrastructure.persistence.entity.IdentityEntity;
+import com.triminds.security.identity.domain.Identity;
+import com.triminds.security.identity.infrastructure.persistence.entity.IdentityEntity;
 
 public final class IdentityMapper {
     private IdentityMapper() {}

@@ -1,8 +1,8 @@
 package com.triminds.security.identity.application.usecase.triminds.identity.application.usecase;
 
-import com.triminds.identity.application.ports.*;
-import com.triminds.identity.domain.Identity;
-import com.triminds.identity.domain.IdentityStatus;
+import com.triminds.security.identity.application.ports.*;
+import com.triminds.security.identity.domain.Identity;
+import com.triminds.security.identity.domain.IdentityStatus;
 import com.triminds.shared.errors.DomainException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

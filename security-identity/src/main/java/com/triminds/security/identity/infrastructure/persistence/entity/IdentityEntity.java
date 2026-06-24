@@ -1,6 +1,6 @@
-package io.triminds.identity.infrastructure.persistence.entity;
+package io.triminds.security.identity.infrastructure.persistence.entity;
 
-import com.triminds.identity.domain.IdentityStatus;
+import com.triminds.security.identity.domain.IdentityStatus;
 import jakarta.persistence.*;
 import java.time.Instant;
 import java.util.UUID;

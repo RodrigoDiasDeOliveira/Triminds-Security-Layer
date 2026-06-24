@@ -1,6 +1,6 @@
-package com.triminds.identity.infrastructure.config;
+package com.triminds.security.identity.infrastructure.config;
 
-import com.triminds.identity.application.ports.PasswordHasherPort;
+import com.triminds.security.identity.application.ports.PasswordHasherPort;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;

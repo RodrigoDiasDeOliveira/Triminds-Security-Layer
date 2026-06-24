@@ -1,9 +1,9 @@
-package com.triminds.identity.infrastructure.persistence;
+package com.triminds.security.identity.infrastructure.persistence;
 
-import com.triminds.identity.application.ports.IdentityRepositoryPort;
-import com.triminds.identity.domain.Identity;
-import com.triminds.identity.infrastructure.persistence.mapper.IdentityMapper;
-import com.triminds.identity.infrastructure.persistence.repository.IdentityJpaRepository;
+import com.triminds.security.identity.application.ports.IdentityRepositoryPort;
+import com.triminds.security.identity.domain.Identity;
+import com.triminds.security.identity.infrastructure.persistence.mapper.IdentityMapper;
+import com.triminds.security.identity.infrastructure.persistence.repository.IdentityJpaRepository;
 import org.springframework.stereotype.Repository;
 import java.util.Optional;
 import java.util.UUID;

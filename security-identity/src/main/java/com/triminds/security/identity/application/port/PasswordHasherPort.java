@@ -1,8 +1,8 @@
-package com.triminds.identity.application.ports;
+package com.triminds.security.identity.application.ports;
 
-import com.triminds.identity.domain.Identity;
+import com.triminds.security.identity.domain.Identity;
 
-public interface IdentityEventPublisherPort {
+public interface  PasswordHasherPort{
     void identityCreated(Identity i);
     void identityActivated(Identity i);
     void identityDisabled(Identity i);

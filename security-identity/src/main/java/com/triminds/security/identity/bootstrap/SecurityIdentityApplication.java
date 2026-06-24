@@ -1,4 +1,4 @@
-package com.triminds.identity.bootstrap;
+package com.triminds.security.identity.bootstrap;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

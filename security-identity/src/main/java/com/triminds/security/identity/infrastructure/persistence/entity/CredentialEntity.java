@@ -1,4 +1,4 @@
-package com.triminds.identity.infrastructure.persistence.entity;
+package com.triminds.security.identity.infrastructure.persistence.entity;
 
 import jakarta.persistence.*;
 import java.time.Instant;

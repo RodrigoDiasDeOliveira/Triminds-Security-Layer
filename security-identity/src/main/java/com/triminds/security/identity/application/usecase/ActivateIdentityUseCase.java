@@ -1,8 +1,8 @@
-package com.triminds.identity.application.usecase;
+package com.triminds.security.identity.application.usecase;
 
-import com.triminds.identity.application.ports.IdentityEventPublisherPort;
-import com.triminds.identity.application.ports.IdentityRepositoryPort;
-import com.triminds.identity.domain.Identity;
+import com.triminds.security.identity.application.ports.IdentityEventPublisherPort;
+import com.triminds.security.identity.application.ports.IdentityRepositoryPort;
+import com.triminds.security.identity.domain.Identity;
 import com.triminds.shared.errors.DomainException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

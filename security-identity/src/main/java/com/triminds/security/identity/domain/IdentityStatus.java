@@ -1,4 +1,4 @@
-package com.triminds.identity.domain;
+package com.triminds.security.identity.domain;
 
 
 public enum IdentityStatus { PENDING, ACTIVE, DISABLED, LOCKED }

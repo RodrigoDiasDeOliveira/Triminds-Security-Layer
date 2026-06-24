@@ -1,10 +1,10 @@
-package com.triminds.identity.infrastructure.web;
+package com.triminds.security.identity.infrastructure.web;
 
-import com.triminds.identity.application.usecase.ActivateIdentityUseCase;
-import com.triminds.identity.application.usecase.AuthenticateIdentityUseCase;
-import com.triminds.identity.application.usecase.CreateIdentityUseCase;
-import com.triminds.identity.domain.Identity;
-import com.triminds.shared.tenant.TenantHolder;
+import com.triminds.security.identity.application.usecase.ActivateIdentityUseCase;
+import com.triminds.security.identity.application.usecase.AuthenticateIdentityUseCase;
+import com.triminds.security.identity.application.usecase.CreateIdentityUseCase;
+import com.triminds.security.identity.domain.Identity;
+import com.triminds.security.shared.tenant.TenantHolder;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
