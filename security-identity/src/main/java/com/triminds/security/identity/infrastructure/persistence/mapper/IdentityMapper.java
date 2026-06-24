@@ -4,16 +4,47 @@ import com.triminds.security.identity.domain.Identity;
 import com.triminds.security.identity.infrastructure.persistence.entity.IdentityEntity;
 
 public final class IdentityMapper {
-    private IdentityMapper() {}
-    public static Identity toDomain(IdentityEntity e) {
-        return new Identity(e.getId(), e.getTenantId(), e.getUsername(), e.getEmail(),
-                e.getStatus(), e.getFailedAttempts(), e.getCreatedAt(), e.getUpdatedAt());
+
+    private IdentityMapper() {
     }
-    public static IdentityEntity toEntity(Identity i) {
-        IdentityEntity e = new IdentityEntity();
-        e.setId(i.getId()); e.setTenantId(i.getTenantId()); e.setUsername(i.getUsername());
-        e.setEmail(i.getEmail()); e.setStatus(i.getStatus()); e.setFailedAttempts(i.getFailedAttempts());
-        e.setCreatedAt(i.getCreatedAt()); e.setUpdatedAt(i.getUpdatedAt());
-        return e;
+
+
+    public static Identity toDomain(IdentityEntity entity) {
+
+        if (entity == null) {
+            return null;
+        }
+
+        return new Identity(
+                entity.getId(),
+                entity.getTenantId(),
+                entity.getUsername(),
+                entity.getEmail(),
+                entity.getStatus(),
+                entity.getFailedAttempts(),
+                entity.getCreatedAt(),
+                entity.getUpdatedAt()
+        );
+    }
+
+
+    public static IdentityEntity toEntity(Identity identity) {
+
+        if (identity == null) {
+            return null;
+        }
+
+        IdentityEntity entity = new IdentityEntity();
+
+        entity.setId(identity.getId());
+        entity.setTenantId(identity.getTenantId());
+        entity.setUsername(identity.getUsername());
+        entity.setEmail(identity.getEmail());
+        entity.setStatus(identity.getStatus());
+        entity.setFailedAttempts(identity.getFailedAttempts());
+        entity.setCreatedAt(identity.getCreatedAt());
+        entity.setUpdatedAt(identity.getUpdatedAt());
+
+        return entity;
     }
 }
