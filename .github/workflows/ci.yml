@@ -35,13 +35,3 @@ jobs:
       - name: Build
         run: mvn -B -ntp verify
 
-
-      - name: Trivy FS Scan
-        uses: aquasecurity/trivy-action@v0.33.1
-        with:
-          version: v0.65.0
-          scan-type: fs
-          scan-ref: .
-          severity: HIGH,CRITICAL
-          exit-code: '0'
-          format: table
