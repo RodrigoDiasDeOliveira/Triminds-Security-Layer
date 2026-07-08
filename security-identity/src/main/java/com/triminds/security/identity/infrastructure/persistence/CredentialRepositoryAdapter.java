@@ -3,12 +3,7 @@ package com.triminds.security.identity.infrastructure.persistence;
 import com.triminds.security.identity.application.ports.CredentialRepositoryPort;
 import com.triminds.security.identity.domain.Credential;
 import com.triminds.security.identity.infrastructure.persistence.entity.CredentialEntity;
-<<<<<<< HEAD
-
-import jakarta.persistence.EntityManager;
-=======
 import com.triminds.security.identity.infrastructure.persistence.repository.CredentialJpaRepository;
->>>>>>> 38ec414 (update commit)
 import org.springframework.stereotype.Repository;
 
 import java.util.Optional;
@@ -17,16 +12,14 @@ import java.util.UUID;
 @Repository
 public class CredentialRepositoryAdapter implements CredentialRepositoryPort {
 
-    private final EntityManager entityManager;
+    private final CredentialJpaRepository jpaRepository;
 
-    public CredentialRepositoryAdapter(EntityManager entityManager) {
-        this.entityManager = entityManager;
+    public CredentialRepositoryAdapter(CredentialJpaRepository jpaRepository) {
+        this.jpaRepository = jpaRepository;
     }
-
 
     @Override
     public Credential save(Credential credential) {
-
         CredentialEntity entity = new CredentialEntity();
 
         entity.setId(credential.id());
@@ -35,47 +28,26 @@ public class CredentialRepositoryAdapter implements CredentialRepositoryPort {
         entity.setAlgorithm(credential.algorithm());
         entity.setUpdatedAt(credential.updatedAt());
 
-
-        entityManager.persist(entity);
-
+        CredentialEntity saved = jpaRepository.save(entity);
 
         return new Credential(
-                entity.getId(),
-                entity.getIdentityId(),
-                entity.getPasswordHash(),
-                entity.getAlgorithm(),
-                entity.getUpdatedAt()
+                saved.getId(),
+                saved.getIdentityId(),
+                saved.getPasswordHash(),
+                saved.getAlgorithm(),
+                saved.getUpdatedAt()
         );
     }
 
-
     @Override
     public Optional<Credential> findByIdentityId(UUID identityId) {
-
-        CredentialEntity entity =
-                entityManager.createQuery(
-                        "select c from CredentialEntity c where c.identityId = :id",
-                        CredentialEntity.class
-                )
-                .setParameter("id", identityId)
-                .getResultStream()
-                .findFirst()
-                .orElse(null);
-
-
-        if(entity == null){
-            return Optional.empty();
-        }
-
-
-        return Optional.of(
-                new Credential(
+        return jpaRepository.findByIdentityId(identityId)
+                .map(entity -> new Credential(
                         entity.getId(),
                         entity.getIdentityId(),
                         entity.getPasswordHash(),
                         entity.getAlgorithm(),
                         entity.getUpdatedAt()
-                )
-        );
+                ));
     }
 }
