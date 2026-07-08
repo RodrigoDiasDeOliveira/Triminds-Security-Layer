@@ -37,7 +37,7 @@ public class AssignRoleService implements AssignRoleUseCase {
                 UUID.randomUUID(), tenantId, identityId, roleId, Instant.now()
         ));
 
-        cache.invalidateIdentity(tenantId, identityId);
+        cache.evict(tenantId, identityId);
         events.publishRoleAssignment(tenantId,
                 new RoleAssignmentPayload(identityId, roleId, actorId, true));
     }

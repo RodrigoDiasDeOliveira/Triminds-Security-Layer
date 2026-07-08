@@ -23,7 +23,7 @@ public class RevokeRoleService implements RevokeRoleUseCase {
     @Transactional
     public void execute(UUID tenantId, UUID actorId, UUID identityId, UUID roleId) {
         assignmentRepo.delete(tenantId, identityId, roleId);
-        cache.invalidateIdentity(tenantId, identityId);
+        cache.evict(tenantId, identityId);
         events.publishRoleAssignment(tenantId,
                 new RoleAssignmentPayload(identityId, roleId, actorId, false));
     }

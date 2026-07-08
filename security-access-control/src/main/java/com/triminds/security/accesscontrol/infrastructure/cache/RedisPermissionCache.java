@@ -40,4 +40,7 @@ public class RedisPermissionCache {
         // simplificado: em produção seria scan por prefix
         // aqui mantemos base funcional
     }
+    public void invalidateIdentity(UUID tenantId, UUID identityId) {
+    evict(tenantId, identityId);
+}
 }
