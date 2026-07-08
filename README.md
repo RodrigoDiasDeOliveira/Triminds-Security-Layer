@@ -1,7 +1,7 @@
 
 <img width="1168" height="784" alt="JWyiT" src="https://github.com/user-attachments/assets/94b5d400-9305-4dcd-9f4c-69d019ce2a3a" />
 
-# Triminds Security Layer
+
 # Triminds Security Layer
 
 [![Java](https://img.shields.io/badge/Java-21-blue.svg)]()
@@ -9,6 +9,8 @@
 [![License](https://img.shields.io/badge/license-MIT-green.svg)]()
 
 Enterprise-grade Security Platform built with Java, Spring Boot and Hexagonal Architecture.
+
+Triminds Security Layer was created to provide a reusable, enterprise-grade security platform capable of supporting modern cloud-native applications. Instead of embedding authentication, authorization, auditing and policy evaluation inside business systems, the platform centralizes these capabilities into specialized, modular components that can evolve independently.
 
 
 
