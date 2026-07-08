@@ -23,17 +23,32 @@ public class EvaluatePolicyService implements EvaluatePolicyUseCase {
     @Override
     public PolicyDecision evaluate(Map<String, Object> input) {
         var cached = cache.get(input);
-        if (cached.isPresent()) return cached.get();
+        if (cached.isPresent()) {
+            return cached.get();
+        }
 
         try {
-            OpaQueryResponse r = opa.queryAllow(Map.of("input", input.get("input")));
-            boolean allow = r != null && r.result() != null && Boolean.TRUE.equals(r.result());
-            var decision = allow ? PolicyDecision.allow() : PolicyDecision.deny("opa.deny");
+            OpaQueryResponse response = opa.queryAllow(Map.of("input", input.get("input")));
+
+            boolean allow = response != null
+                    && response.result() != null
+                    && Boolean.TRUE.equals(response.result());
+
+            PolicyDecision decision = allow
+                    ? PolicyDecision.permit()
+                    : PolicyDecision.deny("opa.deny");
+
             cache.put(input, decision);
             return decision;
+
         } catch (Exception e) {
             log.warn("OPA unreachable, denying: {}", e.getMessage());
-            return new PolicyDecision(false, List.of("opa.unreachable"), List.of());
+
+            return new PolicyDecision(
+                    false,
+                    List.of("opa.unreachable"),
+                    List.of()
+            );
         }
     }
 }
