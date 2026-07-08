@@ -3,11 +3,7 @@ package com.triminds.security.identity.application.usecase;
 import com.triminds.security.identity.application.ports.IdentityEventPublisherPort;
 import com.triminds.security.identity.application.ports.IdentityRepositoryPort;
 import com.triminds.security.identity.domain.Identity;
-<<<<<<< HEAD
-import com.triminds.security.shared.errors.DomainException;
-=======
-import com.triminds.shared.errors.DomainException;
->>>>>>> 38ec414 (update commit)
+import com.triminds.security.shared.errors.DomainException;   // ← escolha uma
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import java.util.UUID;
@@ -18,12 +14,15 @@ public class ActivateIdentityUseCase {
     private final IdentityEventPublisherPort events;
 
     public ActivateIdentityUseCase(IdentityRepositoryPort identities, IdentityEventPublisherPort events) {
-        this.identities = identities; this.events = events;
+        this.identities = identities; 
+        this.events = events;
     }
 
     @Transactional
     public Identity execute(UUID id) {
-        Identity i = identities.findById(id).orElseThrow(() -> new DomainException("NOT_FOUND", "Identity not found"));
+        Identity i = identities.findById(id)
+            .orElseThrow(() -> new DomainException("NOT_FOUND", "Identity not found"));
+        
         i.activate();
         Identity saved = identities.save(i);
         events.identityActivated(saved);

@@ -7,13 +7,14 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 @SpringBootApplication
-<<<<<<< HEAD
-@ComponentScan(basePackages = {"com.triminds.security.identity", "com.triminds.shared"})
-=======
-@ComponentScan(basePackages = {"com.triminds.security.identity", "com.triminds.security.shared"})
->>>>>>> 38ec414 (update commit)
+@ComponentScan(basePackages = {
+    "com.triminds.security.identity", 
+    "com.triminds.security.shared"     // versão mais consistente
+})
 @EntityScan("com.triminds.security.identity.infrastructure.persistence.entity")
 @EnableJpaRepositories("com.triminds.security.identity.infrastructure.persistence.repository")
 public class SecurityIdentityApplication {
-    public static void main(String[] args) { SpringApplication.run(SecurityIdentityApplication.class, args); }
+    public static void main(String[] args) {
+        SpringApplication.run(SecurityIdentityApplication.class, args);
+    }
 }
