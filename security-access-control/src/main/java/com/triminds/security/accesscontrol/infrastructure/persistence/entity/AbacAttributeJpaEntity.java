@@ -1,5 +1,5 @@
 package com.triminds.security.accesscontrol.infrastructure.persistence.entity;
-import jakarta.persistence.Column;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
@@ -8,14 +8,11 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-      
 
-
-
+import java.util.UUID;
 
 @Entity
-@Table(name="abac_attributes")
-
+@Table(name = "abac_attributes")
 @Getter
 @Setter
 @Builder
@@ -23,21 +20,14 @@ import lombok.Setter;
 @AllArgsConstructor
 public class AbacAttributeJpaEntity {
 
+    @Id
+    private UUID id;
 
-@Id
-private UUID id;
+    private UUID tenantId;
 
+    private UUID identityId;
 
-private UUID tenantId;
+    private String attributeName;
 
-
-private UUID identityId;
-
-
-private String attributeName;
-
-
-private String attributeValue;
-
-
+    private String attributeValue;
 }

@@ -2,18 +2,19 @@ package com.triminds.security.accesscontrol.infrastructure.persistence.entity;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.Id;  
+import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.Setter;       
+import lombok.Setter;
 
+import java.time.Instant;
+import java.util.UUID;
 
 @Entity
-@Table(name="identity_roles")
-
+@Table(name = "identity_roles")
 @Getter
 @Setter
 @Builder
@@ -21,29 +22,17 @@ import lombok.Setter;
 @AllArgsConstructor
 public class RoleAssignmentJpaEntity {
 
+    @Id
+    private UUID id;
 
-@Id
-private UUID id;
+    @Column(nullable = false)
+    private UUID tenantId;
 
+    @Column(nullable = false)
+    private UUID identityId;
 
+    @Column(nullable = false)
+    private UUID roleId;
 
-@Column(nullable=false)
-private UUID tenantId;
-
-
-
-@Column(nullable=false)
-private UUID identityId;
-
-
-
-@Column(nullable=false)
-private UUID roleId;
-
-
-
-private Instant createdAt;
-
-
-
+    private Instant createdAt;
 }

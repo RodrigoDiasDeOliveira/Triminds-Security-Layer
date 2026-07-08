@@ -1,6 +1,7 @@
 package com.triminds.security.accesscontrol.infrastructure.persistence.entity;
 
 
+
 import jakarta.persistence.*;
 import lombok.*;
 
