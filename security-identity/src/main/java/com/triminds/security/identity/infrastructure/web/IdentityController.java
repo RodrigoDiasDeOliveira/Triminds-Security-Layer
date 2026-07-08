@@ -4,7 +4,11 @@ import com.triminds.security.identity.application.usecase.ActivateIdentityUseCas
 import com.triminds.security.identity.application.usecase.AuthenticateIdentityUseCase;
 import com.triminds.security.identity.application.usecase.CreateIdentityUseCase;
 import com.triminds.security.identity.domain.Identity;
+<<<<<<< HEAD:security-identity/src/main/java/com/triminds/security/identity/infrastructure/web/IdentityController.java
 import com.triminds.security.shared.tenant.TenantHolder;
+=======
+import com.triminds.shared.tenant.TenantHolder;
+>>>>>>> 38ec414 (update commit):security-identity/src/main/java/com/triminds/security/identity/infrastructure/web/identityController.java
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;

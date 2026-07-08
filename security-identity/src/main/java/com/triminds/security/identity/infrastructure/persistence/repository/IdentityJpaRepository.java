@@ -1,6 +1,6 @@
-package com.triminds.security.identity.infrastructure.persistence.repository.triminds.identity.infrastructure.persistence.repository;
+package com.triminds.security.identity.infrastructure.persistence.repository;
 
-import com.triminds.identity.infrastructure.persistence.entity.IdentityEntity;
+import com.triminds.security.identity.infrastructure.persistence.entity.IdentityEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 import java.util.Optional;
 import java.util.UUID;

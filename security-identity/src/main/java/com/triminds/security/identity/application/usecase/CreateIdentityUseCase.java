@@ -3,7 +3,11 @@ package com.triminds.security.identity.application.usecase;
 import com.triminds.security.identity.application.ports.*;
 import com.triminds.security.identity.domain.Credential;
 import com.triminds.security.identity.domain.Identity;
+<<<<<<< HEAD
 import com.triminds.security.shared.errors.DomainException;
+=======
+import com.triminds.shared.errors.DomainException;
+>>>>>>> 38ec414 (update commit)
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 

@@ -3,8 +3,12 @@ package com.triminds.security.identity.infrastructure.persistence;
 import com.triminds.security.identity.application.ports.CredentialRepositoryPort;
 import com.triminds.security.identity.domain.Credential;
 import com.triminds.security.identity.infrastructure.persistence.entity.CredentialEntity;
+<<<<<<< HEAD
 
 import jakarta.persistence.EntityManager;
+=======
+import com.triminds.security.identity.infrastructure.persistence.repository.CredentialJpaRepository;
+>>>>>>> 38ec414 (update commit)
 import org.springframework.stereotype.Repository;
 
 import java.util.Optional;

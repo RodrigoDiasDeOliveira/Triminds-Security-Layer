@@ -1,4 +1,5 @@
 package com.triminds.security.identity.infrastructure.persistence;
+<<<<<<< HEAD
 
 import com.triminds.security.identity.application.ports.IdentityRepositoryPort;
 import com.triminds.security.identity.domain.Identity;
@@ -8,6 +9,13 @@ import com.triminds.security.identity.infrastructure.persistence.mapper.Identity
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.TypedQuery;
 
+=======
+
+import com.triminds.security.identity.application.ports.IdentityRepositoryPort;
+import com.triminds.security.identity.domain.Identity;
+import com.triminds.security.identity.infrastructure.persistence.mapper.IdentityMapper;
+import com.triminds.security.identity.infrastructure.persistence.repository.IdentityJpaRepository;
+>>>>>>> 38ec414 (update commit)
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 

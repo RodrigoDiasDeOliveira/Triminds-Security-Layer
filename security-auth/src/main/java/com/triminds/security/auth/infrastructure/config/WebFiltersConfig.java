@@ -1,4 +1,8 @@
+<<<<<<< HEAD:security-auth/src/main/java/com/triminds/security/auth/infrastructure/config/WebFiltersConfig.java
 package com.triminds.security.auth.infrastructure.config;
+=======
+package com.triminds.security.identity.infrastructure.config;
+>>>>>>> 38ec414 (update commit):security-identity/src/main/java/com/triminds/security/identity/infrastructure/config/WebFilterConfig.java
 
 import com.triminds.security.shared.web.CorrelationIdFilter;
 import com.triminds.security.shared.web.TenantResolverFilter;

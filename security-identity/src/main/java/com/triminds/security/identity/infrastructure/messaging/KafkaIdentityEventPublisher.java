@@ -2,8 +2,13 @@ package com.triminds.security.identity.infrastructure.messaging;
 
 import com.triminds.security.identity.application.ports.IdentityEventPublisherPort;
 import com.triminds.security.identity.domain.Identity;
+<<<<<<< HEAD
 import com.triminds.security.shared.events.EventEnvelope;
 import com.triminds.security.shared.kafka.KafkaTopics;
+=======
+import com.triminds.shared.events.EventEnvelope;
+import com.triminds.shared.kafka.KafkaTopics;
+>>>>>>> 38ec414 (update commit)
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Component;
 
