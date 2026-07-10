@@ -1,6 +1,6 @@
-package com.triminds.gateway.admin.controller;
-import com.triminds.gateway.admin.client.DownstreamClient;
-import com.triminds.gateway.admin.config.DownstreamProperties;
+package com.triminds.security.gateway.admin.controller;
+import com.triminds.security.gateway.admin.client.DownstreamClient;
+import com.triminds.security.gateway.admin.config.DownstreamProperties;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

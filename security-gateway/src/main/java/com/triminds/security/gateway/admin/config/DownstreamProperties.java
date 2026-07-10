@@ -1,5 +1,7 @@
-package com.triminds.gateway.admin.config;
+package com.triminds.security.gateway.admin.config;
+
 import org.springframework.boot.context.properties.ConfigurationProperties;
+
 @ConfigurationProperties(prefix = "triminds.downstream")
 public class DownstreamProperties {
     private Endpoint identity = new Endpoint();

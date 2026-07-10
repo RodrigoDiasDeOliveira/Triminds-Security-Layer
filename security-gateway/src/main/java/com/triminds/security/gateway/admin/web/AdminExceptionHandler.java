@@ -1,4 +1,4 @@
-package com.triminds.gateway.admin.web;
+package com.triminds.security.gateway.admin.web;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
