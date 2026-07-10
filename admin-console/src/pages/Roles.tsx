@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useAssignRole, useRevokeRole } from "@triminds/security-sdk";
+import { useAssignRole, useRevokeRole } from "@triminds/sdks";
 import { client } from "../lib/client";
 
 export default function Roles() {

@@ -1,5 +1,5 @@
 {
-  "name": "@triminds/security-sdk",
+  "name": "@triminds/sdks",
   "version": "1.0.0",
   "description": "Triminds Security Layer TypeScript SDK",
   "main": "dist/index.js",

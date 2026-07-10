@@ -1,0 +1,20 @@
+triminds:
+  security:
+    cors: "http://localhost:5173,http://localhost:3000,http://localhost:8080"
+    jwk-set-uri: ${AUTH_JWKS_URI:http://security-auth:8080/.well-known/jwks.json}
+
+  downstream:
+    identity:
+      base-url: ${IDENTITY_URL:http://security-identity:8080}
+    access:
+      base-url: ${ACCESS_URL:http://security-access-control:8080}
+    policy:
+      base-url: ${POLICY_URL:http://security-policy-engine:8080}
+    risk:
+      base-url: ${RISK_URL:http://security-risk-engine:8080}
+    audit:
+      base-url: ${AUDIT_URL:http://security-audit:8080}
+    intel:
+      base-url: ${INTEL_URL:http://security-intelligence:8080}
+    auth:
+      base-url: ${AUTH_URL:http://security-auth:8080}

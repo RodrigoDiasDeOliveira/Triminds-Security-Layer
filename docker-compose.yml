@@ -20,49 +20,137 @@ services:
     image: redis:7-alpine
     ports: ["6379:6379"]
 
-  zookeeper:
-    image: confluentinc/cp-zookeeper:7.6.0
-    environment:
-      ZOOKEEPER_CLIENT_PORT: 2181
+  # ==================== Triminds Security Services ====================
 
-  kafka:
-    image: confluentinc/cp-kafka:7.6.0
-    depends_on: [zookeeper]
+  security-gateway:
+    build: ./security-gateway
+    ports: ["8080:8080"]
     environment:
-      KAFKA_BROKER_ID: 1
-      KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
-      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://kafka:9092,PLAINTEXT_HOST://localhost:29092
-      KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: PLAINTEXT:PLAINTEXT,PLAINTEXT_HOST:PLAINTEXT
-      KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
-    ports: ["29092:29092"]
+      - SPRING_PROFILES_ACTIVE=docker
+      - AUTH_JWKS_URI=http://security-auth:8080/.well-known/jwks.json
+      - IDENTITY_URL=http://security-identity:8080
+      - ACCESS_URL=http://security-access-control:8080
+      - POLICY_URL=http://security-policy-engine:8080
+      - RISK_URL=http://security-risk-engine:8080
+      - AUDIT_URL=http://security-audit:8080
+      - INTEL_URL=http://security-intelligence:8080
+      - AUTH_URL=http://security-auth:8080
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_started
+    networks:
+      - triminds
+
+  security-auth:
+    build: ./security-auth
+    environment:
+      - SPRING_PROFILES_ACTIVE=docker
+    depends_on:
+      postgres:
+        condition: service_healthy
+    networks:
+      - triminds
+
+  security-identity:
+    build: ./security-identity
+    environment:
+      - SPRING_PROFILES_ACTIVE=docker
+    depends_on:
+      postgres:
+        condition: service_healthy
+    networks:
+      - triminds
+
+  security-access-control:
+    build: ./security-access-control
+    environment:
+      - SPRING_PROFILES_ACTIVE=docker
+    depends_on:
+      postgres:
+        condition: service_healthy
+    networks:
+      - triminds
+
+  security-policy-engine:
+    build: ./security-policy-engine
+    environment:
+      - SPRING_PROFILES_ACTIVE=docker
+    depends_on:
+      postgres:
+        condition: service_healthy
+      opa:
+        condition: service_started
+    networks:
+      - triminds
+
+  security-risk-engine:
+    build: ./security-risk-engine
+    environment:
+      - SPRING_PROFILES_ACTIVE=docker
+    depends_on:
+      postgres:
+        condition: service_healthy
+    networks:
+      - triminds
+
+  security-audit:
+    build: ./security-audit
+    environment:
+      - SPRING_PROFILES_ACTIVE=docker
+    depends_on:
+      postgres:
+        condition: service_healthy
+    networks:
+      - triminds
+
+  security-intelligence:
+    build: ./security-intelligence
+    environment:
+      - SPRING_PROFILES_ACTIVE=docker
+    depends_on:
+      postgres:
+        condition: service_healthy
+    networks:
+      - triminds
+
+  # ==================== Infra ====================
 
   opa:
     image: openpolicyagent/opa:0.69.0
-    command:
-      - "run"
-      - "--server"
-      - "--log-level=info"
-      - "--addr=0.0.0.0:8181"
-      - "/policies"
+    command: ["run", "--server", "--log-level=info", "--addr=0.0.0.0:8181", "/policies"]
     volumes:
       - ./infra/opa-policies:/policies:ro
     ports: ["8181:8181"]
+    networks:
+      - triminds
 
   prometheus:
     image: prom/prometheus:v2.55.0
     ports: ["9090:9090"]
     volumes:
       - ./infra/prometheus.yml:/etc/prometheus/prometheus.yml:ro
+    networks:
+      - triminds
 
   grafana:
     image: grafana/grafana:11.3.0
     ports: ["3000:3000"]
     environment:
       GF_SECURITY_ADMIN_PASSWORD: admin
+    networks:
+      - triminds
 
   jaeger:
     image: jaegertracing/all-in-one:1.62
     ports: ["16686:16686", "4317:4317", "4318:4318"]
+    networks:
+      - triminds
 
 volumes:
   pgdata:
+
+networks:
+  triminds:
+    driver: bridge

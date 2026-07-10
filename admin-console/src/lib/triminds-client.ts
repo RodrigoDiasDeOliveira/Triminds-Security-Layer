@@ -4,7 +4,7 @@ export interface TrimindsConfig {
   baseUrl: string;
   tenantId: string;
   getToken: () => string | Promise<string>;
-// Cliente HTTP para o Triminds Security Gateway (BFF /admin/*).
+// Cliente HTTP para o Triminds Security Gateway ( /admin/*).
 // Todas as chamadas passam pelo gateway. O gateway roteia para
 // os módulos (identity, access-control, policy-engine, risk-engine,
 // audit, intelligence, auth).
@@ -192,13 +192,13 @@ export const trimindsClient = new TrimindsClient({
       window.localStorage.getItem("triminds_token")) ||
     "",
 });
-  },
+  }
   rotateKeys: () => request<void>("/admin/auth/rotate-keys", { method: "POST" }),
   sessions: () =>
     request<Array<{ id: string; user: string; createdAt: string }>>(
       "/admin/auth/sessions",
     ),
-};
+}
 // ---------- Identities ----------
 export const identities = {
   list: (q?: { query?: string; page?: number; size?: number }) =>

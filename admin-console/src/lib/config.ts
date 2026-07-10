@@ -1,4 +1,4 @@
-// src/config.ts ou src/lib/config.ts
+
 export const config = {
   gatewayUrl: import.meta.env.VITE_GATEWAY_URL || 'http://localhost:8080',
   apiBaseUrl: import.meta.env.VITE_API_BASE_URL || 'http://localhost:8080',
